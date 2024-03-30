@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.5</version>
+    </parent>
+
+    <groupId>cc.wanforme</groupId>
+    <artifactId>hi-there</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- commit hash -->
+        <webview-java.version>652786b</webview-java.version>
+        <javafx.version>19.0.2.1</javafx.version>
+        <ofx-spring-boot-support.version>0.0.6</ofx-spring-boot-support.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>casterlabs-maven</id>
+            <url>https://repo.casterlabs.co/maven</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>cc.wanforme</groupId>
+            <artifactId>jpp-spring-boot-starter</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>cc.wanforme</groupId>
+            <artifactId>ofx-spring-boot-support</artifactId>
+            <version>${ofx-spring-boot-support.version}</version>
+        </dependency>
+
+        <!-- region openfx -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <!-- endregion -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>cc.wanforme.hi.HiThereLauncher</mainClass>
+                    <!-- exclude openjfx jars -->
+                    <!--<excludeGroupIds>org.openjfx</excludeGroupIds>-->
+                </configuration>
+            </plugin>
+
+            <!-- openjfx jars -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                            <includeGroupIds>org.openjfx</includeGroupIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> -->
+        </plugins>
+    </build>
+
+</project>

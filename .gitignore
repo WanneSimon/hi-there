@@ -1,0 +1,23 @@
+# IntelliJ
+*.iml
+.idea/
+
+# Eclipse
+.settings/
+.project
+.classpath
+.metadata
+
+# Common
+target/
+.DS_Store
+__MACOSX
+
+/frontend/node_modules
+/logs
+/src/main/resources/static/dist
+/webview*
+/libwebview*
+/WebView*
+/paths.txt
+

@@ -1,0 +1,12 @@
+open module hi.there {
+    requires rson;
+    requires java.desktop;
+    requires javafx.graphics;
+    requires com.sun.jna;
+    requires cc.wanforme.ofx;
+    requires org.slf4j;
+    requires spring.core;
+    requires spring.boot.autoconfigure;
+    requires jpp.spring.boot.starter;
+    requires spring.beans;
+}

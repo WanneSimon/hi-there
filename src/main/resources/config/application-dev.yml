@@ -1,0 +1,29 @@
+server:
+  port: 8049  # 客户端不应该指定特定端口号
+  servlet:
+    context-path: / # 后端 url 根路径
+  shutdown: graceful # 优雅关机(勿强制杀死进程)
+  resources:
+    #static-locations: classpath:dist/  # 将静态资源目录修改到 src/main/resrouces/dist 下，也就是打包后的文件
+    #static-locations: classpath:mswebview-spring-example/src/main/resources/dist/
+
+# 日志文件位置
+logging:
+  config: classpath:log4j2-spring.xml # 这个是默认的，可以不写，换了名字就要写
+  level:
+    ROOT: info
+
+jpp-ms-webview:
+  # 自定义 ErrorController
+  custom-error-controller: false
+  # 前端 url 根路径， 对应前端 VITE_FRONT_BASE
+  front-base-url: /jpp
+  # 前端打包文件位置 （/src/main/resources/static/dist/）
+  front-base-dir: /dist
+  # 前端主文件 /src/main/resources/static/dist/index.html
+  front-index-html: ${jpp-ms-webview.front-base-dir}/index.html
+  # 前端首页url
+  # after package build
+  #front-index-url: ${jpp-ms-webview.front-base-url}/home
+  # development
+  front-index-url: http://localhost:8042${jpp-ms-webview.front-base-url}/home
