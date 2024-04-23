@@ -25,6 +25,9 @@
                 <!-- <template v-if="item._url">
                   <img :src="item._url" :fit="'contain'"  />
                 </template> -->
+                <!--<el-image :src="item._url" :fit="'contain'" :preview-src-list="[item._url]" >
+                    <template #error>{{ item._url }}</template>
+                </el-image> -->
                 <el-image :src="item._url" :fit="'contain'" :preview-src-list="[item._url]" >
                     <template #error>{{ item._url }}</template>
                 </el-image>

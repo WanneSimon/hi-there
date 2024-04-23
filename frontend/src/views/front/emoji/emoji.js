@@ -8,6 +8,10 @@ const emojiOp = window["jpp"]
 import { ElNotification } from 'element-plus'
 const Noti = ElNotification
 
+let serverBase = import.meta.env.VITE_SERVER_BASE
+//serverBase = serverBase.endsWith("/") ? serverBase : serverBase+"/"
+console.log("serverBase", serverBase)
+
 export default {
   name: 'Emoji',
   components: { EmojiConfig, },
@@ -74,29 +78,31 @@ export default {
 
         fsFiltered = fsFiltered.filter(e =>{
           e._pre = null
-          e._url = null
+          // e._url = serverBase + "/local/" + encodeURIComponent(e.path)
+          e._url = serverBase + "/local?p=" + encodeURIComponent(e.path)
           return !e.isDir
         })
+        this.files = this.files.concat(fsFiltered)
 
-        // 不需要加载 base64 了 (DE-base64)
-        let limit = 99999999
-        for(let k=0; k< fsFiltered.length && k<limit ; k++) {
-          //await this.loadFileData(fsFiltered, k, arr)
-          this.loadFileData(fsFiltered, k, this.files)
-        }
+        // // 不需要加载 base64 了 (DE-base64)
+        // let limit = 99999999
+        // for(let k=0; k< fsFiltered.length && k<limit ; k++) {
+        //   //await this.loadFileData(fsFiltered, k, arr)
+        //   this.loadFileData(fsFiltered, k, this.files)
+        // }
       }
 
       //console.log("fsFiltered", arr)
 
       //this.files = arr
       this.loading = false
-      // console.log("files", this.files)
+      console.log("files", this.files)
     },
     searchClick() {
       this.searchByName(this.name)
     },
 
-    // 将文件用 base64 的形式读取，读取成功则放入新的数组中
+    // 将文件用 base64 的形式读取，读取成功则放入新的数组中 （太慢，太占资源）
     async loadFileData(arr, index, newArr) {
       let item = arr[index]
 

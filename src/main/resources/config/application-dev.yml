@@ -15,7 +15,7 @@ logging:
 
 jpp-ms-webview:
   # 自定义 ErrorController
-  custom-error-controller: false
+  custom-error-resolver: false
   # 前端 url 根路径， 对应前端 VITE_FRONT_BASE
   front-base-url: /jpp
   # 前端打包文件位置 （/src/main/resources/static/dist/）
@@ -24,6 +24,6 @@ jpp-ms-webview:
   front-index-html: ${jpp-ms-webview.front-base-dir}/index.html
   # 前端首页url
   # after package build
-  #front-index-url: ${jpp-ms-webview.front-base-url}/home
+  front-index-url: ${jpp-ms-webview.front-base-url}/emoji # ${jpp-ms-webview.front-base-url}/home
   # development
-  front-index-url: http://localhost:8042${jpp-ms-webview.front-base-url}/home
+  #front-index-url: http://localhost:8042${jpp-ms-webview.front-base-url}/emoji

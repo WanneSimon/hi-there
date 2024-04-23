@@ -78,7 +78,7 @@ public class WebviewLauncher {
 
     private void bindJs() throws IOException {
         WebviewBridge bridge = new WebviewBridge(wv);
-        bridge.defineObject("jpp", new EmojiOp());
+        bridge.defineObject("jpp", new EmojiOp(stage));
     }
 
 
@@ -96,6 +96,10 @@ public class WebviewLauncher {
     }
     public static WebviewLauncher getInstance() {
         return instance;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     public void exit() {

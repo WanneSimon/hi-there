@@ -25,8 +25,8 @@ public class HiThereFx extends BaseOFXApplication {
     @Override
     protected void stage(Stage stage) {
         this.stage = stage;
-        stage.setWidth(1200);
-        stage.setHeight(800);
+        stage.setWidth(800);
+        stage.setHeight(600);
 
         // set icons
         try {

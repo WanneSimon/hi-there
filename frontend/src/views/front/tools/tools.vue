@@ -1,6 +1,5 @@
 <template>
   <div class="tools-wrapper">
-    <meta-header :metaInfo="{ title: metaTitle }"></meta-header>
     <div v-for="item,index in tools" :key="'tool_'+index"
       class="tool-item float-block">
 
@@ -53,7 +52,6 @@
 </style>
 
 <script>
-import MetaHeader from '@/components/vue-meta/meta-header.vue'
 // import axios from 'axios'
 import { ElScrollbar } from 'element-plus'
 
@@ -64,7 +62,7 @@ let baseUrl = ''
 export default {
   name: 'Tools',
   components: {
-    MetaHeader,  ElScrollbar
+    ElScrollbar
   },
   data () {
     return {

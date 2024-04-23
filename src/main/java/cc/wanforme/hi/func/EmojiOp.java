@@ -5,6 +5,8 @@ import dev.webview.webview_java.bridge.JavascriptObject;
 import javafx.scene.image.Image;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.File;
@@ -24,9 +26,11 @@ public class EmojiOp extends JavascriptObject {
 
     private File cfg;
     private List<String> paths = new ArrayList<>();
-    public EmojiOp() throws IOException {
-        this(DEFAULT_CFG);
+    private Stage stage;
 
+    public EmojiOp(Stage stage) throws IOException {
+        this(DEFAULT_CFG);
+        this.stage = stage;
     }
     public EmojiOp(String cfgFile) throws IOException {
         cfg = new File(cfgFile);
@@ -84,7 +88,6 @@ public class EmojiOp extends JavascriptObject {
         return collect;
     }
 
-
     /** 获取文件的 base64 */
     @JavascriptFunction
     public String open(String path) throws IOException {
@@ -103,10 +106,17 @@ public class EmojiOp extends JavascriptObject {
         if ( re == JFileChooser.APPROVE_OPTION) {
             File dir = chooser.getSelectedFile();
             if (dir!=null) {
-//                return URLEncoder.encode(dir.getPath(), StandardCharsets.UTF_8);
                 return dir.getPath();
             }
         }
+
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Select directory");
+//        //fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("all", "*.*"));
+//        File file = fileChooser.showOpenDialog(stage);
+//        if (file != null) {
+//            return file.getPath();
+//        }
 
         return null;
     }

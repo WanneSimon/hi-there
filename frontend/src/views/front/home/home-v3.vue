@@ -2,7 +2,6 @@
     <ElementBg :urls="bgImgs" :interval="10000"></ElementBg>
     
     <div class="main-body">
-      <meta-header :metaInfo="{ title: '' }"></meta-header>
       <div class="content" v-if="sentence">
         <p class="st" >{{sentence.content}}</p>
         <p class="source">
